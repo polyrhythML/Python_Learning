@@ -39,8 +39,32 @@ print(S.replace("a", "bit"))    # outputs spbitm
 line = "aas,ssdad,EHE,SDsd,dSD,SD,dSDWFGWETH"
 print(line.split(","))          # outputs : ['aas', 'ssdad', 'EHE', 'SDsd', 'dSD', 'SD', 'dSDWFGWETH']
 line = line + "sdsd   "
+# Removes the right side spaces
 print(line.rstrip())            # outputs aas,ssdad,EHE,SDsd,dSD,SD,dSDWFGWETHsdsd
-                                # removes the right side spaces
 
+# String Formatting
 
+print("%s , eggs , and %s "%("spam", "SPAM"))
+print("{0} , eggs , and {1} ".format("spam", "SPAM"))
+print("{} , eggs , and {} ".format("spam", "SPAM"))
+print("{:.2f}".format(296999.2567))
+
+# Python 3.X strings are unicode encoded text
+# print(u"X" + b"y")  # works in 2.X
+print(u"X" + "y")   # works in 3.X , work as u"xy"
+
+# Python 2.X types are objects and 3.X types are classes
+# print(type(L))   <type "list">
+# print(type(L))  # <class "type">
+
+# There are 3 ways to check type of an object in python
+L = []
+if(type(L)) == type([]):
+    print("yes")
+elif type(L) == list:
+    print("Check2")
+elif isinstance(L, list):
+    print("Check3")
+else:
+    print("I don't have any other way to check the types in the python")
 
