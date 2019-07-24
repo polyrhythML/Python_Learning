@@ -256,3 +256,164 @@ print(acts[0](2))               # Outputs : 0
 print(acts[1](2))               # Outputs : 1
 print(acts[2](2))               # Outputs : 4
 print(acts[4](2))               # Outputs : 16
+
+# Non local Statements
+# Nested functions have read and write access to names in the enclosing function.
+# This makes nested scope closure more useful, by providing changeable info.
+
+
+def tester(start):
+    state = start
+    def nested(label):
+        print(label, start)
+    return nested
+
+F = tester(0)
+F("spam")                       # Outputs : spam 0
+
+
+def tester(start):
+    state = start
+    def nested(label):
+        print(label, state)
+        state += 1
+    return nested
+
+
+F = tester(0)
+#F("spam")                     # UnboundLocalError: local variable 'state' referenced before assignment
+
+# nonlocal to rescue
+
+
+def tester(start):
+    state = start
+
+    def nested(label):
+        nonlocal state
+        print(label, state)
+        state += 1
+    return nested
+
+
+F = tester(0)
+F("spam")                       # Outputs : spam 0
+F("nextspam")                   # Outputs : nextspam 1   --- > retains the state
+
+
+# Some subtleties
+# non local names really must be previously assigned in an enclosing def's scope when a non local is evaluated,
+# or else you will get an error
+
+"""
+def tester(start):
+
+    def nested(label):
+        nonlocal state
+        print(label, state)     # Output : SyntaxError: no binding for nonlocal 'state' found
+        state += 1              # Gives out error
+    return nested
+"""
+
+# Though its not the case with global
+
+
+def tester():
+
+    def nested(label):
+        global state
+        state = 0
+        print(label, state)     # Output : SyntaxError: no binding for nonlocal 'state' found
+        state += 1              # Gives out error
+    return nested
+
+X = tester()
+out = X("label")                # Outputs : label 0
+print(state)                    # Outputs : 1    global state
+# X.state    ------ > no state object associated with  X , It is not visible outside the function
+# Non locals are not looked up in the module's global scope or builtin scope outside the def, even if they already
+# exist
+
+spam = 99
+
+"""
+def tester():
+
+    def nested(label):
+        nonlocal spam
+        print(label)            # Output : SyntaxError: no binding for nonlocal 'state' found
+        spam += 1               # Gives out error
+    return nested
+"""
+# It expects the spam to exist and pick up the global spam variable
+# But it gives error , as theere is no binding to the non local variable spam
+# F = tester()
+# out = F("label")                # Outputs : SyntaxError: no binding for nonlocal 'spam' found
+
+
+
+"""
+Why nonlocal? State Retention Options 
+
+* State information retention becomes crucial in many programs
+* While functions can return results, their local variables wont be able to retain other values that must live 
+between the calls
+* Non local allows multiple copies of changeable state to be retained in memory
+"""
+
+# States with globals
+"""
+* Firstly, it requires global declaration in both functions and is prone to name collision in global scope
+(if there is state already there)
+* A more subtle problem is that it only allows for a single shared copy of the state information in the module 
+scope
+"""
+
+
+def tester (start):
+    global state
+    state = start
+
+    def nested(label):
+        global state
+        print(label, state)
+        state += 1
+    return nested
+
+
+F = tester(10)
+G = F("trippy")                         # Outputs : trippy 10
+G = F("again trippy")                   # Outputs : trippy 11
+G = F("again again trippy")             # Outputs : trippy 12
+
+X = tester(111)
+X1 = X("exams")                         # Outputs : exams
+X1 = X("exams_1")                       # Outputs : exams_1
+X1 = X("exams_2")                       # Outputs : exams_2
+
+
+# Replacing nonlocal with an attribute
+
+
+def tester(start):
+    def nested(label):
+        print(label, nested.state)
+        nested.state += 1
+    nested.state = start
+    return nested
+
+
+X = tester(10)
+X1 = X("label")                     # Outputs : label 10
+print(X.state)                      # Outputs : label 11     # Can accesss state as an attribute of the X
+
+# Above code relies on the fact that assignment to a name, when it increments nested.state, it is changing
+# part of the object nested references, not the name itself
+
+# GLOBALS, NONLOCALS, FUNCTIONS, CLASSES ALL OFFER STATE RETENTION OPTION
+# GLOBAL - > single copy shared data
+# nonlocal -> changed in 3.X
+# Classes - > requires a bit of OOPs
+
+
+
