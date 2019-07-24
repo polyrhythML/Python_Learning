@@ -143,10 +143,116 @@ print(x)                 # Outputs : 3
 
 # PROGRAM DESIGN : MINIMIZE GLOBAL VARIABLE USE
 
+"""
+Changing global variables can lead to well-known software problem because the variables values are dependent on the
+order of calls to arbitrarily distant functions, programs can become difficult to debug
+
+Globals generally make code difficult to understand and reuse than code consisting of self contained functions that
+rely on locals
+Multi-threading - do parallel processing in Python, also commonly depend on global variables,
+they become shared memory b/w functions running in parallel threads and so act as a communication device.
+
+"""
+
+# Minimize Cross file Changes
+
+X = 99 # First.py
+# Second.py
+#import first
+#print(first.X)
+
+"""
+Once first.py imported, the second.py has access to all the variables of first.py, first.py 's namespace is 
+morphed into the namespace of the second.py
+The problem with first.X = 88 is for too implict , whosoever is charged with maintaining the code for first.X
+has no clue that some arbitrarily far-removed module on the import chain can change x out from under him.
+
+Such things leads to code inflexibility 
+"""
+
+# The way to do it
+
+# first.py
+#X  = 99
+#def setx(new):               ----- > create a function which is visible and shows that you are calling it
+#    global X                         to change the value of X
+#    X = new
+
+# Second.py
+# import first
+# first.setx(88)
+
+def f1():
+    X = 88
+    def f2():
+        print(X)
+    return f2
+
+action = f1()
+action()                    # Outputs : 88
+
+# Here e see f2 remember the scope of enclosing scope of X , even though f1 no more exists
 
 
+# CLOSURE / FACTORY FUNCTION : remembering closing function's state is called closure or factory function
+# Function objects remembers values in enclosing scopes regardless of whether these scopes are still present
+# in memory of not
+# In effect, they have attached packets of memory, which are local to each copy of the nested function created
+# this is called "State retention"
+
+# these factory functions are used to generated event handlers on the fly in response to the user's input that
+# cannot be anticipated when the GUI is built.
 
 
+def make(N):
+    def action(M):
+        return (M**N)
+    return (action)
 
 
+f = make(3)
+output = f(2)
+print(output)       # Outputs : 8
+output = f(3)
+print(output)       # Outputs : 27
 
+# We see that make doesnot exits here after its call , but the value of the variable N persists in the
+# enclosed function call action
+
+p = make(2)
+output = p(2)
+print(output)       # Outputs : 4
+output = p(3)
+print(output)       # Outputs : 9
+
+
+# Each factory function gets its own set of state information
+
+# Closures can also be created when a class is nested in a def, the values of the enclosing function's local names
+# are retained by reference within the class, or one of its mehtods
+
+# PYTHONIC VIEW : FLAT IS BETTER THAN NESTED
+
+def makeactions():
+    acts = []
+    for i in range(5):
+        acts.append(lambda x : i**x)
+    return acts
+acts = makeactions()
+
+print(acts[0](2))
+print(acts[1](2))               # Above all give output as 16
+print(acts[2](2))               # basically returing the last act call for each of the element
+print(acts[4](2))
+
+
+def makeactions():
+    acts = []
+    for i in range(5):
+        acts.append(lambda x, i=i : i**x)       # this remembers the state of i
+    return acts
+acts = makeactions()
+print(acts[0](2))               # Outputs : 0
+print(acts[1](2))               # Outputs : 1
+print(acts[2](2))               # Outputs : 4
+print(acts[4](2))               # Outputs : 16
