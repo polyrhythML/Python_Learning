@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0f8a7aa-741c-43dd-aef2-3bab00900824" name="Default Changelist" comment="" />
+    <list default="true" id="f0f8a7aa-741c-43dd-aef2-3bab00900824" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Advance_function.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Advance_generators.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dynamic_typing_interlude.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Iterations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lists_Dictionaries.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules_packages.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Numeric_Types.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Overview.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Types_Operations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/While_forlloops" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment_expressions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/b.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comprehensions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator_function.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module_coding_basics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/small.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tuples_files.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xyz.txt" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,10 +37,10 @@
         <state>
           <leaf>
             <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/module_coding_basics.py">
+              <entry file="file://$PROJECT_DIR$/OOPs/introduction.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="537">
-                    <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+                    <caret line="159" column="108" selection-start-line="159" selection-start-column="108" selection-end-line="159" selection-end-column="108" />
                   </state>
                 </provider>
               </entry>
@@ -28,55 +51,7 @@
     </window>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dynamic_typing_interlude.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simple.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/small.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generator_function.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/b.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -93,19 +68,26 @@
       <list>
         <option value="$PROJECT_DIR$/Advance_generators.oy.py" />
         <option value="$PROJECT_DIR$/Advance_generators.py" />
-        <option value="$PROJECT_DIR$/b.py" />
         <option value="$PROJECT_DIR$/Modules_packages.py" />
         <option value="$PROJECT_DIR$/simple.py" />
         <option value="$PROJECT_DIR$/small.py" />
         <option value="$PROJECT_DIR$/module_coding_basics.py" />
+        <option value="$PROJECT_DIR$/packages/dir1/dir2/module1.py" />
+        <option value="$PROJECT_DIR$/packages/dir1/dir2/__init__.py" />
+        <option value="$PROJECT_DIR$/packages/dir1/___init__.py" />
+        <option value="$PROJECT_DIR$/packages/dir1/__init__.py" />
+        <option value="$PROJECT_DIR$/packages/packages_intro.py" />
+        <option value="$PROJECT_DIR$/b.py" />
+        <option value="$PROJECT_DIR$/Advance_modules.py" />
+        <option value="$PROJECT_DIR$/OOPs/introduction.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1211" />
-    <option name="y" value="307" />
-    <option name="width" value="1725" />
-    <option name="height" value="920" />
+    <option name="x" value="1346" />
+    <option name="y" value="227" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -113,6 +95,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,7 +107,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -159,18 +141,18 @@
     <frame x="1359" y="145" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.52974504" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.52974504" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -193,13 +175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generator_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modules_packages.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
@@ -207,10 +182,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/b.py">
+    <entry file="file://$PROJECT_DIR$/module_coding_basics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="514">
+          <caret line="182" column="3" lean-forward="true" selection-start-line="182" selection-start-column="3" selection-end-line="182" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -223,6 +198,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/packages/dir1/dir2/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/packages/dir1/___init__.py" />
+    <entry file="file://$PROJECT_DIR$/packages/packages_intro.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/dir1/dir2/module1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/dir1/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/simple.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -230,17 +242,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/small.py">
+    <entry file="file://$PROJECT_DIR$/b.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module_coding_basics.py">
+    <entry file="file://$PROJECT_DIR$/Advance_modules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2990">
+          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OOPs/introduction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="537">
-          <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+          <caret line="159" column="108" selection-start-line="159" selection-start-column="108" selection-end-line="159" selection-end-column="108" />
         </state>
       </provider>
     </entry>
