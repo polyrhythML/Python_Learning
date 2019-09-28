@@ -155,3 +155,93 @@ not.For simpler classes, you might not use overloading at all, and would rely in
 implement your object behavior.
 """
 
+# Start with simple Python Class
+
+
+class Rec:
+    pass
+
+
+Rec.name = "Bob"
+Rec.age = 40
+
+print(Rec.name)
+print(Rec.age)
+
+"""
+We see above that we can create and access attributes of a class without creating any instance of the class since 
+class in itself is an object.
+"""
+
+# Let's create instance of the Rec class
+
+x = Rec()
+y = Rec()
+
+# These instances are empty namespace objects.
+
+print(x.name)       # Outputs : Bob
+print(y.name)       # Outputs : Bob
+
+# We see that they will obtain the attributes by inheritance.
+
+# We see that attribute reference kicks off inheritance searches,but attribute assignments affect only the objects
+# in which the assignments are made.
+
+x.name = "trippy"
+
+print(x.name)           # trippy
+print(y.name)           # Bob
+
+"""
+Therefore we see that , attributes of a namespace objects are usually implemented as dictionaries, and class inheritance
+trees are just dictionaries with links to other dictionaries.
+__dict__ attribute in the namespace dictionary for most class-based objects. Some classes may also define attributes
+in __slots__.
+"""
+
+
+print(Rec.__dict__)
+# outputs : {'__module__': '__main__', '__dict__': <attribute '__dict__' of 'Rec' objects>,
+# '__weakref__': <attribute '__weakref__' of 'Rec' objects>, '__doc__': None, 'name': 'Bob', 'age': 40}
+
+print(list(Rec.__dict__.keys()))
+# Outputs : ['__module__', '__dict__', '__weakref__', '__doc__', 'name', 'age']
+
+print(list(x.__dict__.keys()))      # outputs : ['name']
+print(list(y.__dict__.keys()))      # outputs : []
+
+
+# To facilitate inheritance search on attribute fetch, each instance has a link to its class that Python creates
+# for us
+
+print(x.__class__)
+
+
+# Classes have a reference attribute to the superclasses
+print(Rec.__bases__)
+
+# Explicit method to access a class object
+
+
+def uppername(obj):
+    return obj.name.upper()
+
+print(uppername(x))         # Outputs : TRIPPY
+
+# We can assign this simple function to an attribute of our class, though, it becomes a method, callable through any
+# instance, as well as through the class name itself as long as we pass in an instance manually
+
+Rec.method = uppername
+
+print(x.method)  # Outputs : <bound method uppername of <__main__.Rec object at 0x000002BCF0764828>>
+
+"""
+Basically, we dont need to define a function inside a class explicitly.We can define a function outside a class 
+and reference to that function using class attributes to create class methods
+"""
+
+
+
+
+
