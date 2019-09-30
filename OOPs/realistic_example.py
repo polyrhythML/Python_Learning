@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
 Here we saw and example of a piece of code which implements OOPs
 * Instance creation - filling out instance attributes 
-* Behavior methods - encapsulatinf logic in a class's methods 
+* Behavior methods - encapsulation of logic in a class's methods 
 * Operating overloading - providing behavior for built-in operations
 * Customizing behavior - redefining subclasses 
 * Customizing constructors - adding initialization logic to superclass steps 
@@ -93,5 +93,49 @@ Here we saw and example of a piece of code which implements OOPs
 """
 
 # USING INTROSPECTION TOOL !!
+
+"""
+* Instance.__class__  -> provides a link from an instance to the class from which it was created.
+* Classes in turn have a __name__, just like modules, and a __bases__ sequence that provides access to superclasses
+* Builtin object has __dict__ attribute provides a dictionary with one key/value pair for every attribute to a namespace
+object.
+
+usage of hasattr() and getattr()  -> 
+"""
+
+# Instance Versus Class Attributes
+
+"""
+* We see that instance attributes attached to the self object shows the objects at the bottom of the inheritance tree 
+i.e. what object.__dict__ contains
+
+* We don't see attributes inherited by the instance from classes above it in the tree.Inherited class attributes are
+attached to the class only, not copied down to instances.
+
+* To look into the inherited attributes, you can climb the __class__ link to the instance's class, use the __dict__
+there to fetch class attributes, and then iterate through the class's __bases__ attribute to climb to even higher
+superclass, repeating as necessary.
+"""
+
+
+# Behavior of the Pickle
+
+"""
+* When Python pickles a class instance, it records its self instance attribute, along with the name of the class it was
+created from and the module where the class lives.
+* The upshot of this scheme is that class instances automatically acquires all their class behavior when they are loaded 
+in the future.We have to import our classes only to make new instances, not to process existing ones.
+* The downside is that classes and their module's files must be importable when as instance is later loaded.
+* pickeable classes must be coded at the top level of a module file accessible from a dictionary listed on the sys.path
+module search path. 
+
+* Because of the above mentioned complications , some applications choose to pickle simpler objects such as dictionaries
+or lists.. 
+* The upside -> changes in a class's source code file are automatically picked up when instances of the class are loaded
+again, there is often no need to update stored object themselves, since updating their class's behavior changes their
+behavior.
+
+"""
+
 
 
