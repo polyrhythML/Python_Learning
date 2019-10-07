@@ -137,5 +137,32 @@ behavior.
 
 """
 
+# SUMMARIZING NAMESPACES AND SCOPES IN PYTHON
+"""
+SIMPLE NAMES : GLOBAL UNLESS
+
+* Assignment (X = value) : Makes names local by default , creates or changes the name X in the current local scope,
+unless declared global. 
+
+* Reference(X) : Looks for the name X in the current local scope, then any and all enclosing functions, then the 
+current global scope, then the built-in scope, per the LEGB rule.
+Enclosing classes are not searched : class names are fetched as object attributes instead
+ 
+ATTRIBUTE NAMES : OBJECTS NAMESPACES
+
+* Qualified attribute names refers to attribute of specific objects and obey the rules for modules and classes. For
+class and instance objects, the reference rules are augmented to include the inheritance search procedure.
+
+* Assignment(object.X = Value)
+Creates or alters the attribute name X in the namespace of the object being qualified, and none other.
+Inhertiance-tree climbing happens only on attribute reference, not on attribute assignment.
+
+* Reference(object.X) 
+For class-based objects, searches for the attribute name X in the object, then in all accessible classes above it, using
+the inheritance search procedure.For nonclass objects such as modules, fetches X from object directly.
+
+"""
+
+
 
 
