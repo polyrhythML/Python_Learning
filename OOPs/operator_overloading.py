@@ -174,3 +174,115 @@ print(next(I))                  # Outputs : 4
 """
 
 # Iter-yield combination to be used when you dont want to explicitly code __next__ and __iter__
+
+
+
+# ATTRIBUTE ACCESS : __getattr__ and __setattr__
+
+# The dot operator expression can be implemented by our code too, for reference, assignment and deletion contexts.
+"""
+__getattr__ method intercepts attribute reference. It's called with the attribute name as string whenever you try to
+qualify an instance with an undefined attribute name. It is not called if python can find the attribute using its 
+inheritance tree search procedure.
+"""
+
+
+class Empty:
+    def __getattr__(self, attrname):
+        if attrname == "age":
+            return 40
+        else:
+            raise AttributeError(attrname)
+
+
+X = Empty()
+print(X .age)
+
+
+# Attribute Assignment and Deletion
+
+"""
+
+* __setattr__ intercepts all attribute assigments. If this method is defined or inherited, self.attr = value becomes
+self.__setattr__("attr", value)
+
+* This allows your class to catch attribute changes, and validate or transform as desired.
+ 
+"""
+
+
+class Accesscontrol:
+    def __setattr__(self, attr, value):
+        if attr == "age":
+            self.__dict__[attr] = value + 10
+        else:
+            raise AttributeError(attr + "not allowed")
+
+
+X = Accesscontrol()
+X.age = 40
+print(X.age)
+#X.name = "Bob"          Outputs : Attribute Error : name not allowed
+
+"""
+__DEL__ATTR__ 
+
+* A third attribute management method, __delattr__. is passed the attribute name string and invoked on all attribute
+ deletions.Like __setattr__, it must avoid recurvise loops by routing attribute deletions with the using class through
+ __dict__ or a superclass.
+"""
+
+"""
+* Thus above three attribute access overloading methods allow you to control or specialize access to attributes in your 
+objects.They tend to play highly specialized roles.
+
+* The __getattribute__ method intercepts all attribute fetches, not just those that are undefined, but when using it 
+you must be cautious than with __getattr__ to avoid loops.
+
+* The property built-in function allows us to associate methods with fetch and set operations on a specific class 
+attribute. 
+
+* Descriptor provide a protocol for associating __get__ and __set__ methods of a class with access to a specific class 
+attribute.
+
+We will have a look at them in a later script!!!
+
+"""
+
+# EMULATING PRIVATE MEMEBER IN A CLASS
+
+
+class PrivateExc(Exception):
+    pass
+
+
+class Privacy:
+    def __setattr__(self, attrname, value):
+        if attrname in self.privates:
+            raise PrivateExc(attrname, self)
+        else:
+            self.__dict__[attrname] = value
+
+
+class Test1(Privacy):
+    privates = ["age"]
+
+
+class Test2(Privacy):
+    privates = ["name", "pay"]
+
+    def __init__(self):
+        self.__dict__["name"] = "Tom"
+
+
+if __name__ == "__main__":
+
+    x = Test1()
+    y = Test2()
+
+    x.name = "Bob"  # Works
+    y.name = "sd"   # fails
+
+    x.age = 30      # Works
+    y.age = 40      # Fails
+
