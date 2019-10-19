@@ -274,6 +274,10 @@ class Test2(Privacy):
     def __init__(self):
         self.__dict__["name"] = "Tom"
 
+# Uncomment the the below multi-line comment to run the above class
+# Comment rest of the code below the comment
+
+"""
 
 if __name__ == "__main__":
 
@@ -285,4 +289,190 @@ if __name__ == "__main__":
 
     x.age = 30      # Works
     y.age = 40      # Fails
+
+"""
+
+
+class adder:
+
+    def __init__(self, value=0):
+        self.data = value
+
+    def __add__(self, other):
+        self.data += other
+
+
+x = adder()
+print(x)            # OUTPUT : <__main__.adder object at 0x00000220D3054C18>
+
+# Coding a str repr method allows us to customize the display as in the following , which defines a __repr__ method
+# in a subclass that returns a string representation for its instances.
+
+
+class addrepr(adder):
+    def __repr__(self):
+        return "This is how you represent something {}".format(self.data)
+
+
+x = addrepr(2)
+print(x)            # This is how you represent something 2
+x+1
+print(x)            # This is how you represent something 3
+print(str(x))       # This is how you represent something 3
+print(repr(x))      # This is how you represent something 3
+
+
+"""
+
+* __repr__ is used everywhere except by print and str when a __str__ is defined.This means you can code a __repr__ to
+define a single display format used everywhere.
+* __str__ use to support print statement support.
+* __str__ overrides __repr__ ....
+"""
+
+# To ensure that a custom  display is run in all contexts regardless of the container, code __repr__, not __str__
+
+
+class Printer:
+    def __init__(self, val):
+        self.val = val
+
+    def __repr__(self):
+        return str(self.val)
+
+
+objs = [Printer(2), Printer(3)]
+for x in objs:
+    print(x)
+
+# Output :  2
+# Output :  3
+
+# __radd__ -> to implement 1 + y without any error
+# __iadd__ -> to implement implict += operator
+# __mul__ , __rmul__ and __imul__ is same as the above explained operators pretty much ....
+
+
+class Number:
+    def __init__(self, val):
+        self.val = val
+
+    def __str__(self):
+        return str(self.val)
+
+    def __iadd__(self, other):
+        self.val += other*2
+        return self
+
+
+x = Number(5)
+x +=1
+print(x)            # Outputs : 7
+
+# Let's change the way we __call__ method for function call expressions applied to your instances
+
+
+class Callee:
+    def __call__(self, *args, **kwargs):
+        print("This is to announce that the instance has arrived")
+        print("Called {}, {}".format(*args, *kwargs))
+
+
+C = Callee()
+C(1, 2, 3)                  # Outputs : This is to announce that the instance has arrived
+                            # Called 1, 2
+
+# __gt__  -> greater than operator
+# __lt__  -> less than operator
+# __cmp__ -> for any of the comparison operator
+
+
+class Comp:
+    def __init__(self, val):
+        self.val = val
+
+    def __gt__(self, other):
+        return self.val == other
+
+    def __lt__(self, other):
+        return self.val > other
+
+
+c = Comp(3)
+print(c > 3)        # Outputs : True, See how we have changed the meaning of the comparison operator itself.
+print(c < 2)        # Outputs : True, We made the less than operator perform the operation of
+                    # the greater than operator
+
+# BOOL and LEN
+# Bool tries to infer object being true or false
+# Len tries to infer the length of the object
+
+
+class Truth:
+    def __bool__(self):
+        return True
+
+
+t = Truth()
+if t:
+    print("Truth is truth !!")      # Above condition works
+
+# If bool method is missing python falls back to the length because a nonempty object is considered true.
+# i.e. a nonzero length is taken to mean the object is true, and a zero length means it is false....
+
+
+class Ltruth:
+    def __len__(self):
+        return 0
+
+
+l = Ltruth()
+
+if not l:
+    print("Yeah it works")
+
+# If both bool and len are present, Bool is used over len.....
+# If neither of the methods are defined then the object vacuously is considered as True
+
+# Deleting an object instance
+
+"""
+* We saw how __new__ is called in python while we are initializing a class and calling its constructor.
+* Similarly, destructor method __del__ is run automatically when an instance's space is being reclaimed --- > garbage
+collection.
+"""
+
+
+class Life:
+    def __init__(self, name="unknown"):
+        print("Hello" + name)
+        self.name = name
+
+    def live(self):
+        print(self.name)
+
+    def __del__(self):
+        print("Goodbye Macha {}".format(self.name))
+
+
+trippy = Life("code")       # Outputs : Hellocode
+trippy.live()               # Outputs : code
+trippy = "new code"         # Outputs : Goodbye Macha code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
