@@ -117,6 +117,106 @@ class PizzaShop:
 
 ################################# OOPs and Delegation ################################
 
+"""
+Delegation is a special form of composition, with a single embedded object managed by a wrapper class that retains most
+or all of the embedded object's interface.
+"""
+
+class Wrapper:
+    def __init__(self, object):
+        self.wrapped = object
+
+    def __getattr__(self, attrname):
+        print("Trace : " + attrname)
+        return getattr(self.wrapped, attrname)
+
+################## Pseudoprivate Class Attributes ####################
+
+"""
+* There are no private objects in python and we usually define a private object in python using _X as the convention.
+* Python doesnot support mangling, i.e. localizing some names in classes. Mangled names are sometimes misleading called
+"""
+####### CASE 1 ######
+
+
+class C1:
+
+    def meth1(self):
+        self.X = 88
+
+    def meth2(self):
+        print(self.X)
+
+
+class C2:
+
+    def metha(self):
+        self.X = 99
+
+    def methb(self):
+        print(self.X)
+
+
+class C3(C1, C2):
+    pass
+# When you instantiate this class I = C3() ---> I.X ---> self.X will depend on which class assigned it last.
+#  If you had metha(self): self.X as self.__X then it becomes _C1__X
+
+##### CASE 2 #####
+
+
+class Super:
+    def method(self): pass
+
+
+class Tool:
+    def __method(self): pass        # __method becomes _Tool__method internally
+
+    def other(self): self.__method()    # internal __method called
+
+
+class Sub1(Tool, Super):
+    def action(self):
+        self.method()               # Here the method() is from super and not Tool as per the rule of inheritance
+                                    # lookup left to right
+
+
+class Sub2(Tool):
+    def __init__(self):
+        self.method() == 99         # Doesnot break Tool.__method, this means... Tool class's method is called
+
+
+########################## BOUND AND UNBOUND METHODS #########################
+
+"""
+bound methods : associated to a class 
+Unbound methods : do not require an instance to called 
+
+"""
+
+class Selfless:
+
+    def __init__(self, data):
+        self.data = data
+
+    def selfless(arg1, arg2):               # Unbounded function
+        return arg1 + arg2
+
+    def normal(self, arg1, arg2):           # bounded function
+        return self.data + arg1 + arg2
+
+# X = Selfless(2)
+# X.normal(3, 4)   ------> perfectly normal call to the normal function
+# Selfless.normal(X, 3, 4) -------> all cool
+# Selfless.selfless(3, 4) ------> works in 3.x but fails in 2.x
+# Below 2 cases fails in both 3.X and 2.X
+
+# X.selfless(3, 4) ----> 2 positional arguments expected but 3 were given, self as first one
+# Selfless.normal(3, 4) ----> one argument missing , since first argument place it considers it as self
+
+
+
+
 
 if __name__ == "__main__":
     example_method(2, 3)
@@ -157,5 +257,11 @@ if __name__ == "__main__":
     scene.order("Shaggy")
 
     ##################### OOPs and Delegation #########################
+
+    x = Wrapper([1, 2, 3, 4])
+    x.append(4)
+    x.wrapped
+
+
 
 
