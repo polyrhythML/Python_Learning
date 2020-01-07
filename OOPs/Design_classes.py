@@ -214,6 +214,50 @@ class Selfless:
 # X.selfless(3, 4) ----> 2 positional arguments expected but 3 were given, self as first one
 # Selfless.normal(3, 4) ----> one argument missing , since first argument place it considers it as self
 
+############### CLASSES GENERIC OBJECT FACTORIES ############
+
+"""
+
+* Class base designs require objects to be created in response to conditions that can't be predicted when a program is 
+written.
+
+* Passing the classes to the functions that generate arbitrary kinds of objects such functions are called the factories
+in OOPs design circles.
+
+Why factories ?
+
+* Factory style functions come in handy here because they would allow us to fetch and pass in classes that cannot be har
+coded in our program ahead of time. Indeed, those classes might not even have existed at all when wrote our code.
+* The factory function proves more useful in the presence of unknown arguments lists, however, and the general factory
+coding pattern can improve the code's flexibility. 
+"""
+
+############# MULTIPLE INHERITANCE ######################
+
+"""
+* When search for an attributem Python's inheritance search traverses all the superclassses in the class header from 
+left to right until a match is found.But if superclasses have their own super classes then , the larger class tree
+structure becomes more complex.
+
+* In classic classes, the attribute search in all cases proceeds depth-first all the way to the top of the inheritance
+tree, and then from left to right. This order is usually called DFLR, for its depth-first, left-to-right path.
+
+* The new method is called MRO, method resolution order. The attribute search is usually as before but in a diamond
+patterns across by tree levels before moving up , in a more breadth-first fashion.
+
+* Multiple inheritance is a good for modelling objects that belong to more than one set.Multiple inheritance also allows
+classes to function as general package of mixable attributes.
+
+* Resolve same name conflict : 
+    
+    * Default : By default, inheritance chooses the first occurence of an attribute it finds when an attribute is 
+    referenced normally- by self.method(), for example. In this mode, Python choose the lowest and the leftmost in 
+    classic classes, and in nondiamond patterns in all classes, new style classes may choose an option to the right
+    before once above the diamonds.
+    
+    * Explicit : In some class models, you may sometimes need to select an attribute explicitly by referencing it 
+    through its class name with superclass.method(self) for the instance.
+"""
 
 
 
@@ -261,6 +305,9 @@ if __name__ == "__main__":
     x = Wrapper([1, 2, 3, 4])
     x.append(4)
     x.wrapped
+
+    #################### Classes as the Object factories ################
+
 
 
 
