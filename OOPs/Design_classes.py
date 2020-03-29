@@ -250,15 +250,43 @@ classes to function as general package of mixable attributes.
 
 * Resolve same name conflict : 
     
-    * Default : By default, inheritance chooses the first occurence of an attribute it finds when an attribute is 
+    * Default : By default, inheritance chooses the first occurrence of an attribute it finds when an attribute is 
     referenced normally- by self.method(), for example. In this mode, Python choose the lowest and the leftmost in 
-    classic classes, and in nondiamond patterns in all classes, new style classes may choose an option to the right
+    classic classes, and in non-diamond patterns in all classes, new style classes may choose an option to the right
     before once above the diamonds.
     
     * Explicit : In some class models, you may sometimes need to select an attribute explicitly by referencing it 
     through its class name with superclass.method(self) for the instance.
 """
 
+###################### CODING MIX-IN DISPLAY CLASSES ###################################
+
+"""
+Write an attribute information viewer class for all kinds of class objects.
+Lisiting instance attribute with __dict__
+
+"""
+
+class Listinstance:
+    """
+    Mix-in class that provides a formatted print() or str() of instances via inheritance of __str__ of coded here,
+    display instance attrs only, self is an instance of lowest class, __X names avoid clashing with client's attrs
+    """
+
+    def __attrnames(self):
+        result = ""
+        for attr in sorted(self.__dict__):
+            result += "\t%s = %s\n " %(attr, self.__dict__[attr])
+        return result
+
+    def __str__(self):
+        return "<Instance of %s, address %s:\n%s>" % (self.__class__.__name__, id(self), self.__attrnames())
+
+class test_class(Listinstance):
+
+    def __init__(self):
+        self.data = "Covid-19"
+        self.reflection = 1212
 
 
 
@@ -306,7 +334,16 @@ if __name__ == "__main__":
     x.append(4)
     x.wrapped
 
-    #################### Classes as the Object factories ################
+    #################### Coding mix in classes  ################
+    test_obj = test_class()
+    print(test_obj)
+    """
+    Outputs:
+    <Instance of test_class, address 140673676673232:
+        data = Covid-19
+        reflection = 1212> 
+    """
+
 
 
 
